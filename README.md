@@ -36,18 +36,7 @@ Mac Photos-library access is not required. The scripts do not jailbreak the phon
 
 ## The user journey
 
-```mermaid
-flowchart TD
-    A[Install the skill once] --> B[Connect your iPhone by USB]
-    B --> C[Ask your assistant for a read-only check]
-    C --> D[Get one report and an exact proposed action list]
-    D --> E{Approve selected actions?}
-    E -->|No| F[Keep the report; phone stays unchanged]
-    E -->|Yes| G[Run a small approved pilot]
-    G --> H[Continue the unchanged approved batch]
-    H --> I[Verify removals and measure free space]
-    I --> J[Repeat the original slow task]
-```
+![User journey: install, connect, inspect, review, approve, clean, verify and check the symptom](docs/workflow.svg)
 
 When the host supports subagents, storage, battery/performance and security analysts can review the same saved facts in parallel. One controller owns phone access and performs changes in sequence. Without subagents, the same checks run sequentially.
 
