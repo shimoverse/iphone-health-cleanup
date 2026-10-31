@@ -8,16 +8,17 @@ Use the isolated environment from the README, then run from the repository root:
 
 ```sh
 .venv/bin/python -m unittest discover -s skills/iphone-health-cleanup/tests -v
+python3 -m unittest discover -s skills/android-health-cleanup/tests -v
 python3 -m unittest discover -s tests -v
 python3 tools/check_publication.py
 git diff --check
 ```
 
-The skill suite uses fake devices. One contract test inspects the installed pinned library; run the suite in that environment so it does not skip. Test output is not proof of real-device access, successful deletion, malware absence or a faster phone. The installer tests use isolated temporary directories, never a real skill directory.
+Both skill suites use fake devices. One contract test inspects the installed pinned library; run the suite in that environment so it does not skip. Test output is not proof of real-device access, successful deletion, malware absence or a faster phone. The installer tests use isolated temporary directories, never a real skill directory.
 
 ## Device testing
 
-Phone access is opt-in and outside ordinary tests. Use your own authorized device and a private run directory outside Git. Start read-only; approve an exact ordinary offloaded-app pilot only after reviewing its local-data consequences. Preserve logs locally and provide a minimal redacted explanation of results. Do not publish a whole inventory as a bug report.
+Phone access is opt-in and outside ordinary tests. Use your own authorized device and a private run directory outside Git. Start read-only; approve an exact ordinary app/action pilot only after reviewing its local-data consequences. Preserve logs locally and provide a minimal redacted explanation of results. Do not publish a whole inventory as a bug report.
 
 ## Privacy and review
 

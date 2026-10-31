@@ -54,6 +54,24 @@ class InstallerTests(unittest.TestCase):
         self.assertEqual(installer.destination("claude", Path("/tmp/fictional-home")),
                          Path("/tmp/fictional-home/.claude/skills/iphone-health-cleanup"))
 
+    def test_android_uses_a_separate_destination(self):
+        self.assertEqual(installer.destination("claude", Path("/tmp/fictional-home"), "android"),
+                         Path("/tmp/fictional-home/.claude/skills/android-health-cleanup"))
+
+    def test_selected_module_cannot_overwrite_other_platform(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            existing = root / "iphone-health-cleanup"
+            existing.mkdir()
+            (existing / "SKILL.md").write_text("existing iPhone instructions")
+            source = root / "android-source"
+            source.mkdir()
+            (source / "SKILL.md").write_text("fictional Android instructions")
+            target = root / "android-health-cleanup"
+            installer.install(target, source=source)
+            self.assertEqual((target / "SKILL.md").read_text(), "fictional Android instructions")
+            self.assertEqual((existing / "SKILL.md").read_text(), "existing iPhone instructions")
+
 
 if __name__ == "__main__":
     unittest.main()

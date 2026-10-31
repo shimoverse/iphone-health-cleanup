@@ -24,6 +24,8 @@ jobs:
           .venv/bin/python -m pip install -r skills/iphone-health-cleanup/scripts/requirements.txt
       - name: Test fake-device safety and pinned API contracts
         run: .venv/bin/python -m unittest discover -s skills/iphone-health-cleanup/tests -v
+      - name: Test Android safety with fake ADB only
+        run: python -m unittest discover -s skills/android-health-cleanup/tests -v
       - name: Test installer and publication guards
         run: python -m unittest discover -s tests -v
       - name: Check public source boundary

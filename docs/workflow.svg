@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="430" viewBox="0 0 1000 430" role="img" aria-labelledby="title desc">
-  <title id="title">iPhone Health and Cleanup user journey</title>
-  <desc id="desc">Install, choose USB scripts or supported iPhone Mirroring screen steps, read-only check, report, approval, cleanup and verification. Mirroring needs the phone locked. If approval is declined, keep the report without changes.</desc>
+  <title id="title">Phone Health and Cleanup user journey</title>
+  <desc id="desc">Install the iPhone or Android module, choose an authorized connection, read-only check, report, approval, cleanup and verification. Mirroring needs the phone locked. If approval is declined, keep the report without changes.</desc>
   <defs>
     <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="#53647a" stroke-width="1.6"/></marker>
   </defs>
   <rect width="1000" height="430" rx="18" fill="#f5f8fc"/>
   <g font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" fill="#14263b">
-    <text x="40" y="40" font-size="24" font-weight="700">Your iPhone cleanup, step by step</text>
+    <text x="40" y="40" font-size="24" font-weight="700">Your phone cleanup, step by step</text>
     <text x="40" y="64" font-size="14" fill="#53647a">Read first. Review together. Change only what you approve.</text>
     <g fill="#fff" stroke="#ccd7e4" stroke-width="1.4">
       <rect x="40" y="100" width="200" height="84" rx="12"/>
@@ -20,7 +20,7 @@
     </g>
     <g font-size="16" text-anchor="middle" font-weight="600">
       <text x="140" y="132">1. Install the skill</text><text x="140" y="157" font-size="13" font-weight="400">One-time local setup</text>
-      <text x="380" y="132">2. Choose a route</text><text x="380" y="157" font-size="13" font-weight="400">USB or iPhone Mirroring</text>
+      <text x="380" y="132">2. Choose a route</text><text x="380" y="157" font-size="13" font-weight="400">iPhone or Android route</text>
       <text x="620" y="132">3. Read-only check</text><text x="620" y="157" font-size="13" font-weight="400">Facts and evidence gaps</text>
       <text x="860" y="132">4. Review the plan</text><text x="860" y="157" font-size="13" font-weight="400">Exact targets and effects</text>
       <text x="860" y="282">5. You approve</text><text x="860" y="307" font-size="13" font-weight="400">Choose specific actions</text>
@@ -35,6 +35,6 @@
     <text x="730" y="277" font-size="12" fill="#53647a">Yes</text>
     <path d="M860 334 V370 H590" fill="none" stroke="#9aa8ba" stroke-width="1.4"/>
     <text x="355" y="376" font-size="14" fill="#53647a">No: keep the report; no changes.</text>
-    <text x="40" y="408" font-size="13" fill="#53647a">USB runs the scripts. Mirroring supports screen steps and needs the iPhone locked. Protected items stay kept.</text>
+    <text x="40" y="408" font-size="13" fill="#53647a">iPhone: USB or Mirroring (locked). Android: authorized ADB; optional screen control. Keep protected apps.</text>
   </g>
 </svg>

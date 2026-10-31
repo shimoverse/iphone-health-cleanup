@@ -1,48 +1,60 @@
-# iPhone Health & Cleanup
+# Phone Health & Cleanup — iPhone + Android
 
-An open-source skill for a local AI assistant that helps you understand a slow or full iPhone, review unused apps, and clean up only what you approve.
+Two open-source skills for a local AI assistant: understand a slow or full phone, review unused apps, and clean up only what you approve. One repository, separate iPhone and Android modules; the existing repository URL stays the same.
 
-**Public preview:** the included scripts have 56 offline safety tests. Their real-iPhone compatibility and time savings have not yet been benchmarked. Start with a read-only check. No Apple endorsement or affiliation.
+**Public preview:** both modules have offline safety tests using fake devices. Real-device compatibility, time savings and storage recovery have not been benchmarked. Start with a read-only check. No Apple or Google endorsement or affiliation.
+
+| Choose your phone | Skill | Main connection |
+|---|---|---|
+| iPhone | [`iphone-health-cleanup`](skills/iphone-health-cleanup/SKILL.md) | Trusted USB for scripts; iPhone Mirroring for supported screen steps |
+| Android / Google Pixel | [`android-health-cleanup`](skills/android-health-cleanup/SKILL.md) | Owner-authorized ADB over USB; paired wireless optional; scrcpy optional for screen steps |
 
 ## The problem it solves
 
-A cloud icon beside an app means iOS has removed the app itself while keeping its documents and data. Those leftover entries can make a phone harder to manage. Reviewing and deleting them one by one means repeated navigation, confirmations and checks.
+On iPhone, a cloud icon marks an offloaded app: its software is removed while documents and data remain. On Android, installed apps, temporary caches and large files offer different cleanup opportunities; archived apps need a separate native review. Reviewing these one by one means repeated navigation, confirmations and checks.
 
 This project gives your assistant a repeatable process:
 
-1. Read a small set of phone facts and identify offloaded apps.
+1. Read a small set of phone facts and build the appropriate app inventory.
 2. Explain what is known, what is unknown and what might help.
 3. Show the exact apps or actions proposed for cleanup.
 4. Wait for your approval, then perform supported actions and check the result.
 
 It preserves authenticators, cryptocurrency exchanges and wallets, password managers and other protected account apps. Unclear app identities stay for review.
 
-**Recovered storage and a faster phone are different results.** Battery wear, heat, network conditions and power settings can also explain slowness. The assistant should check the original symptom again after cleanup. [Apple's performance guidance](https://support.apple.com/en-us/102598).
+**Recovered storage and a faster phone are different results.** Battery wear, heat, network conditions and power settings can also explain slowness. The assistant should check the original symptom again after cleanup. [Apple's performance guidance](https://support.apple.com/en-us/102598), [Google's Pixel performance guidance](https://support.google.com/pixelphone/answer/6377329?hl=en).
 
 ## What works today?
 
-| Capability | Current status |
-|---|---|
-| Read model, iOS/build, available space and some battery fields over trusted USB | Included script; returned fields depend on the device |
-| Produce a preliminary health report | Included script; unavailable evidence stays unknown |
-| Inventory offloaded apps and prepare a deletion list | Included script |
-| Delete specifically approved ordinary offloaded apps and verify absence | Included script; starts with a small pilot and keeps a resumable log |
-| Review Battery Settings, performance symptoms and current security advisories | Assistant workflow; needs relevant observations and current sources |
-| Clear selected Safari/Chrome/Brave history or cache | Guided workflow using a supported phone interface or your help; no bundled universal browser-erasure API |
-| Find blurry photos or large videos and remove clear mistakes | Planned iPhone-only extension; **no photo scanner or photo-deletion engine is included** |
-| A universal health score, guaranteed speed increase or malware-free certificate | Not provided |
+| Capability | iPhone | Android / Pixel |
+|---|---|---|
+| Model/OS/build, free space and available battery facts | Included USB scripts | Included ADB script |
+| App inventory and exact approval list | Offloaded apps | Installed third-party apps for the selected owner user |
+| Approved app removal | Ordinary offloaded apps; verify repeated absence | Ordinary installed apps; explicit owner user and version guard; verify repeated absence |
+| Cache-only app cleanup | Native screen steps where supported | Included guarded requests on Android 13/API 33+ **only if the device advertises the exact capability**; cache-byte recovery remains unverified |
+| Battery wear, usage and security review | Settings plus current sources | Pixel Settings plus current sources; model-dependent capacity/cycles |
+| Browser history/cache | Guided Safari/Chrome/Brave controls | Guided browser controls; no app-data wipe |
+| Duplicate/blurred photos and large videos | Planned on-phone workflow | Reuse Files by Google / Google Photos review screens; **no bundled media scanner or deletion engine** |
+| Archived/retained-data app cleanup | Offloaded workflow above | Native guided review; no guess from broad package-list flags |
+| Guaranteed speedup, universal health score or malware-free certificate | Not provided | Not provided |
 
-Mac Photos-library access is not required. The scripts do not jailbreak the phone, enable Developer Mode, auto-pair it, install profiles or change Home Screen layout. Browser/UI control is optional and must already be available or separately set up with your permission.
+Protected apps include authenticators, cryptocurrency exchanges/wallets, password managers, finance/recovery apps and essential device services. Unknown app identities stay for review. Android additionally checks system packages, default roles, keyboards, accessibility services, device administrators and always-on VPN where accessible. Incomplete protection checks block scripted mutations.
+
+**Android preview batch limit:** uninstall-only plans can continue in two-app steps after a verified pilot. Cache/mixed plans stop at two requests and need native cache review before a fresh small plan. Pending requests block retries; changing the plan does not bypass that safeguard. See the [Android workflow](skills/android-health-cleanup/references/workflow.md).
+
+Mac Photos-library access is not required. Neither module roots/jailbreaks a phone, unlocks its bootloader or installs a phone profile/app. Installing the skill grants no phone access. Optional screen tools require their own setup and permission.
 
 ## Connection options and phone availability
 
-**Choose USB for the included scripts, or iPhone Mirroring for supported on-screen steps.** These routes have different capabilities; Mirroring does not replace the scripts' USB connection.
+**iPhone: USB scripts or iPhone Mirroring screen steps. Android: authorized ADB scripts, with optional scrcpy screen control.** Mirroring does not replace iPhone USB scripting. Android does not require Apple-style locked-phone Mirroring.
 
-| Route | What it can do in this project | Can I use my iPhone at the same time? |
+| Route | What it can do in this project | Can I use my phone at the same time? |
 |---|---|---|
-| **USB — scripted checks and app cleanup** | Run the included health snapshot, offloaded-app inventory and approved deletion/verification scripts. Needs a data-capable cable and existing trust. | **Generally yes during read-only checks.** USB does not reserve the phone screen. For an actual deletion batch, keep the phone idle and avoid app installs/removals or related data changes until verification finishes. |
+| **iPhone USB — scripted checks and app cleanup** | Run the included health snapshot, offloaded-app inventory and approved deletion/verification scripts. Needs a data-capable cable and existing trust. | **Generally yes during read-only checks.** USB does not reserve the phone screen. For an actual deletion batch, keep the phone idle and avoid app installs/removals or related data changes until verification finishes. |
 | **iPhone Mirroring — on-screen review and cleanup** | Inspect Settings and perform supported approved screen actions, such as browser cleanup, if your assistant can actually read and control the mirrored screen. No USB cable is required for Mirroring itself. | **Direct phone use interrupts Mirroring.** Keep the iPhone nearby and locked; unlocking/using it stops the mirrored session. You can interact with the phone through the Mac instead. |
-| **Both, in separate stages** | For example, use USB for the app batch, then Mirroring for browser settings. | A cable may remain connected while mirroring, but the phone still needs to stay locked for the mirrored stage. Only one controller changes the phone at a time. |
+| **Android ADB — USB or paired wireless** | Included snapshot, installed-app plan and approved actions. Owner enables debugging and accepts the computer’s authorization prompt. Wireless debugging requires supported Android and explicit pairing. | **Generally yes for read-only checks.** Keep the phone idle during app changes and keep the connection available until verification finishes. |
+| **Android scrcpy — optional screen control** | Mirrors/controls the shared phone screen through an authorized connection. Useful for native Settings or Files review; not required for the scripts. | Physical use and automation share the foreground. Stop screen automation when the owner takes over. Secure screens and lock authentication remain protected. |
+| **iPhone: both, in separate stages** | For example, use USB for the app batch, then Mirroring for browser settings. | A cable may remain connected while mirroring, but the phone still needs to stay locked for the mirrored stage. Only one controller changes the phone at a time. |
 
 ### Does my phone become unavailable?
 
@@ -59,7 +71,7 @@ Opening Mirroring is not proof that an agent can automate it. The assistant must
 
 ## The user journey
 
-![User journey: install, choose USB scripts or iPhone Mirroring screen steps, inspect, review, approve, clean and verify](docs/workflow.svg)
+![User journey: install the phone module, choose an authorized route, inspect, review, approve, clean and verify](docs/workflow.svg)
 
 When the host supports subagents, storage, battery/performance and security analysts can review the same saved facts in parallel. One controller owns phone access and performs changes in sequence. Without subagents, the same checks run sequentially.
 
@@ -75,15 +87,16 @@ For illustration only, if finding, confirming and checking each app takes a pers
 | 50 | 12.5 minutes | A script submits and verifies the approved requests |
 | 100 | 25 minutes | Detailed results stay in local files instead of repeated screenshots |
 
-Those figures are arithmetic examples, not observed human timings or promised savings. Connection setup, user review, iOS processing and verification still take time; scripted deletion requests run in sequence. Mirroring uses on-screen steps and has no demonstrated speedup here. A small list may not repay first-time setup. Record actual duration and before/after free space in your first run before making savings claims. More subagents are not automatically cheaper.
+Those figures are arithmetic examples, not observed human timings or promised savings. Connection setup, user review, phone processing and verification still take time; scripted deletion requests run in sequence. Mirroring uses on-screen steps and has no demonstrated speedup here. A small list may not repay first-time setup. Record actual duration and before/after free space in your first run before making savings claims. More subagents are not automatically cheaper.
 
 ## Before you start
 
-- A Mac with a local assistant that can read the skill. USB scripts also need local command execution; Mirroring automation needs a working computer-control tool, or your help. The app scripts use a Unix file lock; native Windows execution is not supported. Linux USB setup is not validated here.
+- A local assistant that can read the skill and run local commands. Helpers use Unix file locking: macOS/Linux are the intended hosts; native Windows execution is not supported in this preview. Linux device setup is not validated here. Screen automation needs a working control tool, or your help.
 - For the installer and USB setup: Python **3.11 or newer recommended**, plus Git. The existing offline suite was initially developed on macOS Python 3.9; a current Python avoids its old TLS-library warning. A host can also read the skill directly for Mirroring-only guided work.
-- For **USB scripts**: an iPhone, a data-capable cable and an existing trusted connection. If needed, unlock the phone and complete Apple's Trust prompt yourself. The scripts will not pair automatically.
+- For **iPhone USB scripts**: an iPhone, a data-capable cable and an existing trusted connection. If needed, unlock the phone and complete Apple's Trust prompt yourself. The scripts will not pair automatically.
 - For **Mirroring screen steps**: a compatible Mac/iPhone pair, Apple's Mirroring setup and an assistant with working computer-control access, or your help. No USB cable or Python device library is needed just for these screen steps. Keep the iPhone locked during Mirroring.
-- A few minutes to review the proposed list. Deleting an app also removes its local saved data.
+- For **Android scripts**: separately installed [official Android Platform Tools](https://developer.android.com/tools/releases/platform-tools), a data-capable USB cable, and the phone owner’s Developer options > USB debugging authorization. The preview supports the personal owner user **0** only; work/private/secondary profiles are excluded. Never enable OEM unlocking/root. Android helpers use Python’s standard library; no Python device package is required. Afterward, turn debugging off/revoke computer authorization if no longer needed.
+- A few minutes to review the proposed list. Uninstalling an app can remove its local saved data. Cache-only is a distinct action and can make the next launch slower while files rebuild.
 
 A browser-only chatbot cannot run these local scripts by itself. Installing this skill neither installs a phone app nor grants phone access.
 
@@ -92,15 +105,17 @@ A browser-only chatbot cannot run these local scripts by itself. Installing this
 Copy this into a local coding assistant:
 
 ```text
-Install the iPhone Health & Cleanup skill from:
+Install the appropriate Phone Health & Cleanup module for my phone from:
 https://github.com/shimoverse/iphone-health-cleanup
 
-Review README.md, NOTICE.md and skills/iphone-health-cleanup/SKILL.md first.
-Clone it into a local tools folder. Run tools/install_skill.py --dry-run
+Review README.md, NOTICE.md and the selected module’s SKILL.md first.
+Clone it into a local tools folder. Select --platform iphone or android.
+Run tools/install_skill.py --dry-run
 for the appropriate host (codex, claude or agents), show the destination,
 then install the skill without overwriting any existing skill.
-For USB scripts, set up an isolated Python environment with the pinned
-requirements; Mirroring-only guided steps do not need that device library.
+Only iPhone USB scripts need the pinned Python device library in an
+isolated environment. Android uses separately installed official ADB.
+Mirroring-only guided steps do not need the Python device library.
 Report setup readiness. Do not connect to my phone, delete anything,
 collect logs/backups, or change phone settings during installation.
 ```
@@ -114,21 +129,25 @@ Open Terminal and run:
 ```sh
 git clone https://github.com/shimoverse/iphone-health-cleanup.git
 cd iphone-health-cleanup
-python3 tools/install_skill.py --agent codex --dry-run
-python3 tools/install_skill.py --agent codex
+python3 tools/install_skill.py --agent codex --platform iphone --dry-run
+python3 tools/install_skill.py --agent codex --platform iphone
+
+# For Android instead (or install both into separate folders):
+python3 tools/install_skill.py --agent codex --platform android --dry-run
+python3 tools/install_skill.py --agent codex --platform android
 ```
 
-Choose the host you actually use:
+Choose the host you actually use. The folder is the selected skill name (`iphone-health-cleanup` or `android-health-cleanup`); omitting `--platform` preserves the original iPhone default:
 
 | Option | Skill location |
 |---|---|
-| `--agent codex` | `$CODEX_HOME/skills/iphone-health-cleanup`, or `~/.codex/skills/iphone-health-cleanup` |
-| `--agent claude` | `~/.claude/skills/iphone-health-cleanup` |
-| `--agent agents` | `~/.agents/skills/iphone-health-cleanup`, for hosts that use this location |
+| `--agent codex` | `$CODEX_HOME/skills/<skill-name>`, or `~/.codex/skills/<skill-name>` |
+| `--agent claude` | `~/.claude/skills/<skill-name>` |
+| `--agent agents` | `~/.agents/skills/<skill-name>`, for hosts that use this location |
 
-The installer refuses to replace an existing destination. For an update, review the changes and back up the installed folder before replacing it. Start a new assistant session if the skill is not discovered. Other hosts can read [SKILL.md](skills/iphone-health-cleanup/SKILL.md) directly and follow its relative references; automatic discovery depends on the host.
+The installer refuses to replace an existing destination. For an update, review the changes and back up the installed folder before replacing it. Start a new assistant session if the skill is not discovered. Other hosts can read the [iPhone](skills/iphone-health-cleanup/SKILL.md) or [Android SKILL.md](skills/android-health-cleanup/SKILL.md) directly and follow its relative references; automatic discovery depends on the host.
 
-For the USB scripts, set up the separate device library in a project-local environment. Mirroring-only guided steps can skip this dependency setup:
+For **iPhone USB scripts only**, set up the separate device library in a project-local environment. Mirroring-only guided steps can skip this dependency setup:
 
 ```sh
 python3 -m venv .venv
@@ -139,7 +158,28 @@ The direct dependency is pinned to `pymobiledevice3==11.49.0`; transitive depend
 
 ## Exact prompts to use
 
-### Start with a read-only health check
+### Android / Pixel: start read-only
+
+```text
+Use $android-health-cleanup to check my Pixel’s storage, installed apps,
+available battery facts and security posture. First explain owner-authorized
+USB debugging and select the exact phone and personal owner user. Do not
+delete data, collect private logs, install phone apps or change settings.
+Show evidence, unknowns and the most useful next steps.
+```
+
+### Android / Pixel: prepare an approved cleanup
+
+```text
+Use $android-health-cleanup to prepare an exact Keep / Needs Review /
+Clear Cache / Uninstall list. Preserve authenticators, exchanges, wallets,
+password managers, finance apps, Favorites and essential services. Explain
+local-data loss and show package IDs plus verified app names. Wait for my
+approval of the list, then run a small supported pilot and verify it before
+continuing. Keep browser/media cleanup separately scoped in native screens.
+```
+
+### iPhone: start with a read-only health check
 
 ```text
 Use $iphone-health-cleanup to check my iPhone's storage, available battery
@@ -179,9 +219,11 @@ Do not run USB-only scripts or claim their inventory/verification.
 Show the proposed cleanup scope before changing data.
 ```
 
-In hosts without `$skill-name` invocation, say “Read the installed iPhone Health & Cleanup SKILL.md and follow it.” You can approve several unchanged action rows together; approval is not requested again for each tap. A changed app list or new consequence needs a fresh decision.
+In hosts without `$skill-name` invocation, say “Read the installed phone module’s SKILL.md and follow it.” You can approve several unchanged action rows together; approval is not requested again for each tap. A changed app list or new consequence needs a fresh decision.
 
 ## Read-only commands without an agent
+
+### iPhone
 
 From the cloned repository, create a private temporary run folder outside Git:
 
@@ -200,6 +242,23 @@ Choose the exact device ID from that local list, then substitute it for `YOUR_DE
 
 These commands read the phone or create local reports. If the device is unavailable, stop and fix the connection; do not weaken security settings. For planning, approval, the two-app pilot and verification, follow [the app workflow](skills/iphone-health-cleanup/references/workflow.md). This README deliberately does not provide a one-command unattended deletion recipe.
 
+### Android / Pixel
+
+Once the owner has installed official Platform Tools and authorized the connection, use a private folder outside Git. Do not share the device listing publicly:
+
+```sh
+ANDROID_RUN_DIR="$(mktemp -d "${TMPDIR:-/tmp}/android-health.XXXXXX")"
+adb devices -l
+```
+
+Choose the exact authorized serial from that local list. This preview requires personal owner user `0` to be foreground; it refuses other profiles:
+
+```sh
+python3 skills/android-health-cleanup/scripts/android.py snapshot --serial YOUR_SERIAL --user 0 --out "$ANDROID_RUN_DIR/snapshot.json"
+```
+
+The snapshot also creates a readable Markdown summary. Missing evidence stays unknown; incomplete app protection checks block scripted cleanup. It is not a malware scan or a ranking of actual app usage. Follow the [Android approval, pilot and recovery workflow](skills/android-health-cleanup/references/workflow.md) for subsequent actions. Do not invent a cleanup plan from package names alone.
+
 ## Your data stays out of this repository
 
 The shipped examples use fictional devices and app IDs. The publication is a fresh source-only repository, with no personal cleanup history, device inventories, pair records, screenshots, photos, backups, credentials or runtime logs.
@@ -210,7 +269,8 @@ Never attach raw run folders, screenshots, browser history or backups to public 
 
 ## More detail and contributing
 
-- [Skill instructions](skills/iphone-health-cleanup/SKILL.md)
+- [iPhone skill instructions](skills/iphone-health-cleanup/SKILL.md)
+- [Android skill instructions](skills/android-health-cleanup/SKILL.md), [workflow](skills/android-health-cleanup/references/workflow.md) and [research / access limits / open-source comparison](skills/android-health-cleanup/references/research.md)
 - [Health workflow and capability limits](skills/iphone-health-cleanup/references/health-workflow.md)
 - [App approval and execution workflow](skills/iphone-health-cleanup/references/workflow.md)
 - [On-phone photo cleanup design — planned](skills/iphone-health-cleanup/references/photo-cleanup.md)
@@ -219,4 +279,4 @@ Never attach raw run folders, screenshots, browser history or backups to public 
 
 ## License and credit
 
-This project is licensed under **GPL-3.0-or-later**. See [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md). The GPL license aligns this distribution with the separately installed GPL-licensed pymobiledevice3 dependency. Nolikzero's iphone-app-manager and the pymobiledevice3 Device Operator skill informed the workflow; their scripts and skill bodies were not copied. Other researched tools are not bundled.
+This project is licensed under **GPL-3.0-or-later**. See [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md). The GPL license aligns this distribution with the separately installed GPL-licensed pymobiledevice3 dependency. Nolikzero's iphone-app-manager and the pymobiledevice3 Device Operator skill informed the workflow; their scripts and skill bodies were not copied. Android research includes AOSP, Google Pixel documentation, scrcpy, mobile-mcp, uiautomator2, Shizuku/Canta, SD Maid SE, UAD NG and DroidRun mobile-harness. Concepts were selectively adapted into original code; these tools, binaries and debloat lists are not bundled. ADB is separately installed under its own distribution terms.

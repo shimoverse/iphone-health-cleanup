@@ -17,6 +17,9 @@ ALLOWED |= {PACKAGE + name for name in (
     "references/workflow.md", "references/health-workflow.md", "references/health-research.md",
     "references/source-audit.md", "references/photo-cleanup.md", "references/browser-cleanup.md",
     "tests/test_cleanup.py", "tests/test_health.py", "tests/test_health_safety.py")}
+ALLOWED |= {"skills/android-health-cleanup/" + name for name in (
+    "SKILL.md", "agents/openai.yaml", "scripts/android.py", "tests/test_android.py",
+    "references/research.md", "references/workflow.md")}
 PATTERNS = {
     "private home path": re.compile(r"/(?:Users|home)/[A-Za-z0-9._-]+/"),
     "private temporary path": re.compile(r"/(?:private/)?var/folders/[A-Za-z0-9/_.-]+"),
