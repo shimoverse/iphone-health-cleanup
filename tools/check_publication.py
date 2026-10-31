@@ -20,6 +20,9 @@ ALLOWED |= {PACKAGE + name for name in (
 ALLOWED |= {"skills/android-health-cleanup/" + name for name in (
     "SKILL.md", "agents/openai.yaml", "scripts/android.py", "tests/test_android.py",
     "references/research.md", "references/workflow.md")}
+ALLOWED |= {"docs/blog/" + name for name in (
+    "README.md", "article.md", "reader.html", "linkedin-post.md",
+    "workflow-comparison.svg", "manual-work-estimate.svg", "user-journey.svg")}
 PATTERNS = {
     "private home path": re.compile(r"/(?:Users|home)/[A-Za-z0-9._-]+/"),
     "private temporary path": re.compile(r"/(?:private/)?var/folders/[A-Za-z0-9/_.-]+"),

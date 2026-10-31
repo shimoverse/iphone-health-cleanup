@@ -9,6 +9,10 @@ Two open-source skills for a local AI assistant: understand a slow or full phone
 | iPhone | [`iphone-health-cleanup`](skills/iphone-health-cleanup/SKILL.md) | Trusted USB for scripts; iPhone Mirroring for supported screen steps |
 | Android / Google Pixel | [`android-health-cleanup`](skills/android-health-cleanup/SKILL.md) | Owner-authorized ADB over USB; paired wireless optional; scrcpy optional for screen steps |
 
+## The story behind the skill
+
+[I asked my AI agent to help with a slow iPhone](docs/blog/article.md) follows the original problem, the iPhone Mirroring attempt and the skill built to make the work more explicit and checkable. It includes the user journey, comparison charts, a demo and safety FAQs. See [the companion files](docs/blog/README.md) for the interactive version.
+
 ## The problem it solves
 
 On iPhone, a cloud icon marks an offloaded app: its software is removed while documents and data remain. On Android, installed apps, temporary caches and large files offer different cleanup opportunities; archived apps need a separate native review. Reviewing these one by one means repeated navigation, confirmations and checks.
