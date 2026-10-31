@@ -8,6 +8,12 @@ license: GPL-3.0-or-later
 
 Help the user recover useful space and diagnose slowness, while preserving account access and personal data. Combine the cleanup knowledge of iphone-app-manager with pymobiledevice3's maintained APIs. Provenance and rejected upstream behaviors are in [references/source-audit.md](references/source-audit.md); expanded research is in [references/health-research.md](references/health-research.md).
 
+## Choose access and explain phone availability
+
+Offer **USB for the bundled scripts** and **iPhone Mirroring for supported screen steps**. Confirm the intended device and actual available control before proceeding. Mirroring is not a transport for `cleanup.py` or `health.py`; a Mirroring-only run uses observed UI facts and must not claim script-level metadata/verification. If the host cannot reliably read/tap/scroll the real mirrored app content, stop blind attempts and guide the user.
+
+Explain before starting: USB does not take over the phone screen; ordinary use is generally possible during read-only checks or offline planning. During a deletion batch, keep the cable connected and ask for a quiet window without app installs/removals or related data changes. Mirroring needs a nearby locked iPhone; direct use/unlocking stops the mirrored session, even if a cable remains connected. If interrupted, stop issuing actions and recheck current state before continuing. A request already sent may complete; never promise pause/interrupt undoes it. The user handles authentication themselves. No availability or device-compatibility guarantee follows from the offline tests.
+
 ## Diagnose, review, act, verify
 
 For a general health/slow-phone request, read [references/health-workflow.md](references/health-workflow.md). Start with a minimal read-only baseline: model/iOS/build, free space, available battery fields, the user's slow task and recent changes. Reuse existing observations; do not collect private browsing, messages, photos, full backups or logs by default. A request limited to offloaded apps can follow the narrow app workflow below without a broad health investigation.

@@ -34,9 +34,32 @@ It preserves authenticators, cryptocurrency exchanges and wallets, password mana
 
 Mac Photos-library access is not required. The scripts do not jailbreak the phone, enable Developer Mode, auto-pair it, install profiles or change Home Screen layout. Browser/UI control is optional and must already be available or separately set up with your permission.
 
+## Connection options and phone availability
+
+**Choose USB for the included scripts, or iPhone Mirroring for supported on-screen steps.** These routes have different capabilities; Mirroring does not replace the scripts' USB connection.
+
+| Route | What it can do in this project | Can I use my iPhone at the same time? |
+|---|---|---|
+| **USB — scripted checks and app cleanup** | Run the included health snapshot, offloaded-app inventory and approved deletion/verification scripts. Needs a data-capable cable and existing trust. | **Generally yes during read-only checks.** USB does not reserve the phone screen. For an actual deletion batch, keep the phone idle and avoid app installs/removals or related data changes until verification finishes. |
+| **iPhone Mirroring — on-screen review and cleanup** | Inspect Settings and perform supported approved screen actions, such as browser cleanup, if your assistant can actually read and control the mirrored screen. No USB cable is required for Mirroring itself. | **Direct phone use interrupts Mirroring.** Keep the iPhone nearby and locked; unlocking/using it stops the mirrored session. You can interact with the phone through the Mac instead. |
+| **Both, in separate stages** | For example, use USB for the app batch, then Mirroring for browser settings. | A cable may remain connected while mirroring, but the phone still needs to stay locked for the mirrored stage. Only one controller changes the phone at a time. |
+
+### Does my phone become unavailable?
+
+- **A USB connection does not put the phone into an exclusive-use or maintenance mode.** Ordinary use is generally possible while read-only facts are collected. The included scripts do not lock the phone or deliberately restart it. Service access can still require you to unlock it or resolve a connection prompt; real-device behavior is not yet validated for this release.
+- **Only the actual cleanup stage needs a short, undisturbed window.** Installing/deleting apps, clearing the same data or starting another cleanup can make the approved state stale. Keep the cable connected until the request and verification finish. You can use the phone while the assistant prepares an offline plan or while you review the report; changed targets are rechecked before execution.
+- **With Mirroring, you can take your phone back by unlocking it.** The assistant's on-screen work must stop. Lock the phone and reconnect when ready, then verify the current screen and any earlier action before continuing. An action already submitted may have completed; pausing is not an undo. [Apple's Mirroring safety guidance](https://support.apple.com/en-ca/guide/personal-safety/ips70daa1bcf/web).
+- **If you need to disconnect or interrupt a USB batch, ask the assistant to stop first.** An in-flight removal may still finish. Reconnect and reconcile the saved journal/current app state; never blindly retry a possibly completed removal.
+
+### Mirroring prerequisites and limits
+
+Apple requires a compatible Apple-silicon/T2 Mac on macOS 15+, an iPhone on iOS 18+, the same Apple Account with two-factor authentication, Wi-Fi/Bluetooth, and a nearby locked phone. Availability is region-dependent. Some authentication, camera/microphone and call functions are unavailable inside Mirroring. You handle credentials and any physical-phone authentication yourself; that can interrupt the mirrored stage. Check [Apple's current Mirroring requirements](https://support.apple.com/en-us/120421).
+
+Opening Mirroring is not proof that an agent can automate it. The assistant must confirm that it can read the real app screen, tap and scroll accurately. If it sees only window controls, loses the session, or cannot verify an action, it stops and offers guided steps. Mirroring-only work cannot claim the bundled scripts' structured inventory or repeated API verification. AirPlay screen sharing is not an equivalent interactive control route.
+
 ## The user journey
 
-![User journey: install, connect, inspect, review, approve, clean, verify and check the symptom](docs/workflow.svg)
+![User journey: install, choose USB scripts or iPhone Mirroring screen steps, inspect, review, approve, clean and verify](docs/workflow.svg)
 
 When the host supports subagents, storage, battery/performance and security analysts can review the same saved facts in parallel. One controller owns phone access and performs changes in sequence. Without subagents, the same checks run sequentially.
 
@@ -52,13 +75,14 @@ For illustration only, if finding, confirming and checking each app takes a pers
 | 50 | 12.5 minutes | A script submits and verifies the approved requests |
 | 100 | 25 minutes | Detailed results stay in local files instead of repeated screenshots |
 
-Those figures are arithmetic examples, not observed human timings or promised savings. USB setup, user review, iOS processing and verification still take time; deletion requests run in sequence. A small list may not repay first-time setup. Record actual duration and before/after free space in your first run before making savings claims. More subagents are not automatically cheaper.
+Those figures are arithmetic examples, not observed human timings or promised savings. Connection setup, user review, iOS processing and verification still take time; scripted deletion requests run in sequence. Mirroring uses on-screen steps and has no demonstrated speedup here. A small list may not repay first-time setup. Record actual duration and before/after free space in your first run before making savings claims. More subagents are not automatically cheaper.
 
 ## Before you start
 
-- A Mac with a local assistant that can read files and run Python, such as Codex or Claude Code. The app scripts use a Unix file lock; native Windows execution is not supported. Linux USB setup is not validated here.
-- Python **3.11 or newer recommended**, plus Git. The existing offline suite was initially developed on macOS Python 3.9; a current Python avoids its old TLS-library warning.
-- An iPhone, a data-capable USB cable and an existing trusted connection. If needed, unlock the phone and complete Apple's Trust prompt yourself. The scripts will not pair automatically.
+- A Mac with a local assistant that can read the skill. USB scripts also need local command execution; Mirroring automation needs a working computer-control tool, or your help. The app scripts use a Unix file lock; native Windows execution is not supported. Linux USB setup is not validated here.
+- For the installer and USB setup: Python **3.11 or newer recommended**, plus Git. The existing offline suite was initially developed on macOS Python 3.9; a current Python avoids its old TLS-library warning. A host can also read the skill directly for Mirroring-only guided work.
+- For **USB scripts**: an iPhone, a data-capable cable and an existing trusted connection. If needed, unlock the phone and complete Apple's Trust prompt yourself. The scripts will not pair automatically.
+- For **Mirroring screen steps**: a compatible Mac/iPhone pair, Apple's Mirroring setup and an assistant with working computer-control access, or your help. No USB cable or Python device library is needed just for these screen steps. Keep the iPhone locked during Mirroring.
 - A few minutes to review the proposed list. Deleting an app also removes its local saved data.
 
 A browser-only chatbot cannot run these local scripts by itself. Installing this skill neither installs a phone app nor grants phone access.
@@ -75,7 +99,8 @@ Review README.md, NOTICE.md and skills/iphone-health-cleanup/SKILL.md first.
 Clone it into a local tools folder. Run tools/install_skill.py --dry-run
 for the appropriate host (codex, claude or agents), show the destination,
 then install the skill without overwriting any existing skill.
-Set up an isolated Python environment with the pinned requirements.
+For USB scripts, set up an isolated Python environment with the pinned
+requirements; Mirroring-only guided steps do not need that device library.
 Report setup readiness. Do not connect to my phone, delete anything,
 collect logs/backups, or change phone settings during installation.
 ```
@@ -103,7 +128,7 @@ Choose the host you actually use:
 
 The installer refuses to replace an existing destination. For an update, review the changes and back up the installed folder before replacing it. Start a new assistant session if the skill is not discovered. Other hosts can read [SKILL.md](skills/iphone-health-cleanup/SKILL.md) directly and follow its relative references; automatic discovery depends on the host.
 
-Set up the separate device library in a project-local environment:
+For the USB scripts, set up the separate device library in a project-local environment. Mirroring-only guided steps can skip this dependency setup:
 
 ```sh
 python3 -m venv .venv
@@ -141,6 +166,17 @@ browsers I select on my iPhone. Preserve passwords, bookmarks, autofill,
 downloaded files and wallet data. Explain cookies/sign-outs and any sync
 effects before including them. Use available supported controls or give
 me guided steps; report what was actually verified.
+```
+
+### Use Mirroring without a USB cable
+
+```text
+Use $iphone-health-cleanup through iPhone Mirroring for supported
+on-screen checks and approved actions. First verify that you can read,
+tap and scroll the actual phone screen. Explain when my iPhone must
+remain locked, stop if I use it directly, and recheck state on reconnect.
+Do not run USB-only scripts or claim their inventory/verification.
+Show the proposed cleanup scope before changing data.
 ```
 
 In hosts without `$skill-name` invocation, say “Read the installed iPhone Health & Cleanup SKILL.md and follow it.” You can approve several unchanged action rows together; approval is not requested again for each tap. A changed app list or new consequence needs a fresh decision.

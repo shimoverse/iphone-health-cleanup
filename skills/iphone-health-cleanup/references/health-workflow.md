@@ -4,6 +4,10 @@ Read this for a general iPhone health, slowness or storage request. Keep a narro
 
 ## 1. One baseline, no default private-data sweep
 
+Choose the route with the user: the commands below require trusted USB; iPhone Mirroring is a separate supported-screen route, not a substitute connection for the scripts. For Mirroring-only work, collect only facts actually visible in Settings and label missing structured data unknown. Confirm working screen reading, tapping and scrolling before promising automation. Apple requires the iPhone nearby and locked; unlocking/direct use stops Mirroring. Reconnect and recheck the screen after interruptions. [Apple Mirroring guidance](https://support.apple.com/en-ca/guide/personal-safety/ips70daa1bcf/web).
+
+USB does not reserve the phone's screen. Ordinary use is generally possible during read-only collection or offline report review, subject to device access prompts. Reserve a quiet window for the actual deletion/verification batch, keep the cable connected and avoid concurrent app installs/removals or related data changes. Ask the controller to stop before disconnecting; an in-flight action can still complete. Reconcile journal/current state before any continuation. Neither route is validated on a real phone by the offline tests.
+
 Use an access-restricted local run directory outside any Git checkout. Select the exact already-trusted USB device. Reuse the pinned environment from the app workflow. No automatic pairing, profile installs, Developer Mode changes or passcode changes.
 
 ```sh
