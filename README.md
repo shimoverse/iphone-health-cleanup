@@ -156,6 +156,33 @@ python3 -m venv .venv
 
 The direct dependency is pinned to `pymobiledevice3==11.49.0`; transitive dependencies are not fully locked. Review upgrades before using them. No extra paid AI service, Jev connection or API key is required by the scripts. Your assistant's normal usage limits still apply.
 
+## Everyday use: no special prompt needed
+
+After installing and enabling the skills in your chosen app, start a new chat and describe the outcome in your own words:
+
+> “My phone is slow. Check its health and help me make some space.”
+
+The assistant can select the relevant installed skill from its description. It asks which phone if that is unclear, checks the available connection, starts read-only, then shows exact proposed changes for approval. It does not require you to remember `$iphone-health-cleanup` or `$android-health-cleanup`. Automatic selection is enabled, but it is model-driven rather than a guarantee on every phrasing. Try an ordinary request in a fresh chat after setup; explicit names remain a fallback for troubleshooting.
+
+| App | One-time setup | Access limits |
+|---|---|---|
+| Local Codex | Install both platform skills with the commands above, then start a new chat | Local commands and a separately authorized connection are required for scripted phone access |
+| ChatGPT | Install/enable this skills-only plugin in the account/workspace where you use it | A web/cloud session cannot directly reach a phone attached to your Mac; local execution or guided steps are still needed |
+| Claude Code | `--agent claude` installs local skills; restart the session | This folder installation does **not** install them into Cowork |
+| Claude Cowork | Upload the custom plugin through Customize > Plugins and enable it, then start a new task | Local phone-tool availability must be checked; installation alone does not grant access to the Mac's USB devices |
+
+Installations and enabled settings are specific to the host/account. Publishing on GitHub, remembering this chat, or installing in Codex does not automatically install into ChatGPT or Cowork. Do not put personal device IDs, inventories or deletion permissions in shared/public instructions. Existing exact-list approval and protected-app rules remain in force in every new chat.
+
+The root `plugin.json` packages both skills for OpenAI-compatible plugin hosts; `.claude-plugin/plugin.json` provides Claude compatibility. Neither adds a background service, startup hook or remote phone-control server. To create a source-only upload ZIP after reviewing the current committed release, run from the repository root (the destination must be outside the checkout):
+
+```sh
+git archive --format=zip --output=../phone-health-cleanup.zip HEAD plugin.json .claude-plugin skills LICENSE NOTICE.md
+```
+
+For Cowork, use this ZIP's custom-plugin upload flow; a standalone skill ZIP is a different upload type. No dependencies, debugging setup or phone cleanup occurs during packaging. Keep the plugin enabled. A new machine/account needs setup again; device trust and exact cleanup consent are separate.
+
+Official guidance: [OpenAI skill discovery](https://learn.chatgpt.com/docs/build-skills), [ChatGPT automatic selection and its limits](https://learn.chatgpt.com/docs/migrate-custom-gpts), [Claude custom skills](https://support.claude.com/en/articles/12512180-use-skills-in-claude), [Claude/Cowork plugin installation](https://support.claude.com/en/articles/13837440-use-plugins-in-claude).
+
 ## Exact prompts to use
 
 ### Android / Pixel: start read-only

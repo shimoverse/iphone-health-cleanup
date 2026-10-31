@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "phone-health-cleanup",
+  "version": "0.2.0",
+  "description": "Check iPhone or Android health and free space through a reviewed, approved cleanup plan.",
+  "author": {
+    "name": "Phone Health & Cleanup contributors"
+  },
+  "homepage": "https://github.com/shimoverse/iphone-health-cleanup",
+  "repository": "https://github.com/shimoverse/iphone-health-cleanup",
+  "license": "GPL-3.0-or-later",
+  "keywords": [
+    "phone",
+    "iphone",
+    "android",
+    "pixel",
+    "storage",
+    "cleanup"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Phone Health & Cleanup",
+        "shortDescription": "Check phones and free space",
+        "longDescription": "Use ordinary language to review iPhone or Android storage, available battery and security facts, then approve exact cleanup actions. Includes local scripts; actual phone access needs a supported local host, separately authorized connection and dependencies. Web/cloud sessions can guide but cannot directly reach a USB phone.",
+        "developerName": "Phone Health & Cleanup contributors",
+        "defaultPrompt": "Check my phone\u2019s health and help me free up space. Start read-only and show me the proposed cleanup before changing anything."
+      }
+    }
+  }
+}

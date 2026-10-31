@@ -1,10 +1,12 @@
 ---
 name: iphone-health-cleanup
-description: Check iPhone storage, battery, performance symptoms and security posture; coordinate parallel diagnostic agents, present an evidence-based health report and perform specifically approved cleanup. Includes a trusted-USB read-only snapshot and verified offloaded-app removal; browser and other supported cleanups use a validated UI or guided user steps. Use for slow or full iPhones, cloud-icon apps, battery concerns or a phone health check.
+description: Check iPhone health and safely free storage when the user says their phone is slow, full, low on space, draining battery, or needs unused apps/cache cleaned. Match ordinary requests such as check my phone or make space on my phone; no skill name is needed. Start with read-only facts, show an exact cleanup plan and get approval before changes. Use this module when the phone is iPhone; ask which phone if unclear. Excludes human medical health and computer-disk cleanup.
 license: GPL-3.0-or-later
 ---
 
 # iPhone health and cleanup
+
+Accept natural-language requests; do not require a skill name or special prompt. If the phone platform or intended device is unclear, ask one short clarification before accessing it. Route to the other phone module if appropriate and available. Begin read-only, then present the exact proposed changes for approval. If this host cannot access local phone tools or a supported screen, explain the limitation and offer guided steps or a local-host handoff; do not simulate device access.
 
 Help the user recover useful space and diagnose slowness, while preserving account access and personal data. Combine the cleanup knowledge of iphone-app-manager with pymobiledevice3's maintained APIs. Provenance and rejected upstream behaviors are in [references/source-audit.md](references/source-audit.md); expanded research is in [references/health-research.md](references/health-research.md).
 

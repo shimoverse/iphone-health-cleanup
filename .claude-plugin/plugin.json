@@ -1,0 +1,19 @@
+{
+  "name": "phone-health-cleanup",
+  "version": "0.2.0",
+  "description": "Check iPhone or Android health and free space through a reviewed, approved cleanup plan.",
+  "author": {
+    "name": "Phone Health & Cleanup contributors"
+  },
+  "homepage": "https://github.com/shimoverse/iphone-health-cleanup",
+  "repository": "https://github.com/shimoverse/iphone-health-cleanup",
+  "license": "GPL-3.0-or-later",
+  "keywords": [
+    "phone",
+    "iphone",
+    "android",
+    "pixel",
+    "storage",
+    "cleanup"
+  ]
+}

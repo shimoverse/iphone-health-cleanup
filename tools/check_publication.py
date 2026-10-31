@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = "skills/iphone-health-cleanup/"
-ALLOWED = {"README.md", "LICENSE", "NOTICE.md", "CONTRIBUTING.md", ".gitignore", "docs/workflow.svg",
+ALLOWED = {"plugin.json", ".claude-plugin/plugin.json", "README.md", "LICENSE", "NOTICE.md", "CONTRIBUTING.md", ".gitignore", "docs/workflow.svg",
            ".github/workflows/checks.yml", "tools/install_skill.py", "tools/check_publication.py",
            "tests/test_installer.py", "tests/test_publication.py"}
 ALLOWED |= {PACKAGE + name for name in (

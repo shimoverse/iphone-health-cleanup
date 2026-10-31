@@ -1,10 +1,12 @@
 ---
 name: android-health-cleanup
-description: Check Android and Google Pixel storage, battery observations, software/security posture and cleanup opportunities. Uses explicit-device ADB diagnostics, an exact user-approved plan, guarded cache-only clearing and third-party app removal; native Settings, Files, Chrome and Photos workflows cover other cases. Use for slow/full Android phones or a phone health check.
+description: Check Android or Google Pixel health and safely free storage when the user says their phone is slow, full, low on space, draining battery, or needs unused apps/cache cleaned. Match ordinary requests such as check my phone or make space on my phone; no skill name is needed. Start with read-only facts, show an exact cleanup plan and get approval before changes. Use this module when the phone is Android or Google Pixel; ask which phone if unclear. Excludes human medical health and computer-disk cleanup.
 license: GPL-3.0-or-later
 ---
 
 # Android health and cleanup
+
+Accept natural-language requests; do not require a skill name or special prompt. If the phone platform or intended device is unclear, ask one short clarification before accessing it. Route to the other phone module if appropriate and available. Begin read-only, then present the exact proposed changes for approval. If this host cannot access local phone tools or a supported screen, explain the limitation and offer guided steps or a local-host handoff; do not simulate device access.
 
 Help the phone owner recover useful space and investigate slowness while preserving account access and personal media. The bundled Python helper uses the standard library and an already installed official ADB executable. It does not require root, Shizuku, an APK, an accessibility service, scrcpy or another AI endpoint. Read [references/research.md](references/research.md) for verified capabilities and source limitations, and [references/workflow.md](references/workflow.md) for commands and the decision schema.
 

@@ -2,3 +2,6 @@ interface:
   display_name: "iPhone Health & Cleanup"
   short_description: "Diagnose phone health and approve useful cleanup"
   default_prompt: "Use $iphone-health-cleanup to check my iPhone's storage, battery, performance and security posture. Use parallel read-only analysts if available. Show the evidence, unknowns and exact proposed actions; ask for approval before deleting data or changing settings, then verify approved work."
+
+policy:
+  allow_implicit_invocation: true

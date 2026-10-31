@@ -2,3 +2,6 @@ interface:
   display_name: "Android Health & Cleanup"
   short_description: "Check Pixel health and approve useful cleanup"
   default_prompt: "Use $android-health-cleanup to check my Android phone's storage, available battery facts, performance symptoms and security posture. Select the exact device and personal user, start read-only, protect account apps and Favorites, show the exact proposed actions, wait for approval, then verify supported cleanup."
+
+policy:
+  allow_implicit_invocation: true
