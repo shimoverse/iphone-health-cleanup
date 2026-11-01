@@ -6,6 +6,8 @@ The article includes the manual-versus-agent workflow comparison, an illustrativ
 
 ## Companion files
 
+- [Medium adaptation](medium-article.md): shorter story with the illustrated GIF, practical connection details and FAQs. This file is source text, not proof that a Medium post has been published.
+- [32-second illustrated workflow](../demo/README.md): GIF, MP4 and poster with fictional apps. No live phone connection or measured speedup.
 - [Interactive article and demonstration](reader.html): download the HTML file and open it locally. It is self-contained. GitHub's source viewer does not run the interactive controls. The fictional walkthrough does not connect to a phone.
 - [Short LinkedIn adaptation](linkedin-post.md)
 - [Workflow comparison](workflow-comparison.svg), [manual-time estimate](manual-work-estimate.svg) and [user journey](user-journey.svg)

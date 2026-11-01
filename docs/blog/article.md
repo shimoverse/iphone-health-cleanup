@@ -108,6 +108,10 @@ It should wait for approval of the exact list, run a small pilot and report what
 
 The companion walkthrough uses fictional apps and connects to no phone. It shows the intended sequence and the approval point, without claiming a completed device cleanup.
 
+![Illustrated cleanup workflow with fictional apps, showing a user changing a recommendation before approving the exact batch.](../demo/phone-cleanup-demo.gif)
+
+*Illustration created with AI-assisted code. This 32-second storyboard is not a recording of phone automation or a completion-time benchmark. [MP4 and demo notes](../demo/README.md).*
+
 ## Where it stands today
 
 The [source and setup instructions](https://github.com/shimoverse/iphone-health-cleanup#readme) are public, with separate iPhone and Android modules in one repository. The Android work grew from asking whether the same approach could help on a Google Pixel, while accounting for its different access and permission model.

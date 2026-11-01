@@ -35,6 +35,22 @@ class PublicationTests(unittest.TestCase):
     def test_current_source_has_no_flagged_publication_content(self):
         self.assertEqual(audit.check(ROOT), [])
 
+    def test_modified_media_requires_new_review(self):
+        name = "docs/demo/phone-cleanup-demo.gif"
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            target = root / name
+            target.parent.mkdir(parents=True)
+            target.write_bytes(b"GIF89a" + b"unreviewed content")
+            issues = audit.check(root)
+            self.assertTrue(any(name + ": media changed" in issue for issue in issues))
+
+    def test_unlisted_media_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "phone-screenshot.png").write_bytes(b"\x89PNG\r\n\x1a\n")
+            self.assertTrue(any("phone-screenshot.png: unexpected" in issue for issue in audit.check(root)))
+
 
 if __name__ == "__main__":
     unittest.main()

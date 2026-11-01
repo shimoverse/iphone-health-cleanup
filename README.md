@@ -4,6 +4,24 @@ Two open-source skills for a local AI assistant: understand a slow or full phone
 
 **Public preview:** both modules have offline safety tests using fake devices. Real-device compatibility, time savings and storage recovery have not been benchmarked. Start with a read-only check. No Apple or Google endorsement or affiliation.
 
+## See the workflow in 32 seconds
+
+![Illustrated walkthrough: ask naturally, choose Mirroring or USB, inspect read-only, review the app list, keep a recommended app, approve the exact batch and verify. Fictional apps; no phone is connected.](docs/demo/phone-cleanup-demo.gif)
+
+**Illustration with fictional apps, created with AI-assisted code.** This is a storyboard of the intended workflow, not a recording of automated phone control. Its 32-second playback is not a completion-time claim. [Watch the MP4](docs/demo/phone-cleanup-demo.mp4), [view the still image](docs/demo/phone-cleanup-demo-poster.png), or [read the demo notes](docs/demo/README.md).
+
+## You see the report before anything is deleted
+
+| Stage | What you should receive |
+|---|---|
+| Inventory | The apps the assistant could inspect, their installed/offloaded status and available storage facts. A partial scan must be labeled partial. |
+| Recommendation | A **Recommend deleting / Keep / Need your input** list, with reasons and local-data consequences. |
+| Your changes | You can keep any recommended app. Unclear identities remain held for a question. |
+| One approval | Approval covers one exact deletion list. The assistant should not ask again per app within that unchanged batch. New targets need new approval. |
+| Checked results | A small pilot, verified removals, retained-app checks, and separate pending/failed results. Storage and speed changes need their own measurements. |
+
+Keep trading, finance and cryptocurrency apps, including exchanges, wallets and trackers; password managers; and all authenticators, including Duo. Identity checks and user exclusions matter because name filters cannot recognize every sensitive app. **Installed iPhone apps stay kept by default:** the included iPhone deletion script handles ordinary offloaded apps only.
+
 | Choose your phone | Skill | Main connection |
 |---|---|---|
 | iPhone | [`iphone-health-cleanup`](skills/iphone-health-cleanup/SKILL.md) | Trusted USB for scripts; iPhone Mirroring for supported screen steps |

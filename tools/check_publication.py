@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""Source-only publication guard; not a comprehensive personal-data detector."""
+"""Publication allowlist with reviewed media hashes, not a full privacy detector."""
+import hashlib
 import os
 import re
 import subprocess
@@ -23,6 +24,15 @@ ALLOWED |= {"skills/android-health-cleanup/" + name for name in (
 ALLOWED |= {"docs/blog/" + name for name in (
     "README.md", "article.md", "reader.html", "linkedin-post.md",
     "workflow-comparison.svg", "manual-work-estimate.svg", "user-journey.svg")}
+ALLOWED |= {"docs/blog/medium-article.md", "docs/demo/README.md", "tools/render_demo.py"}
+# Only synthetic illustrations reviewed visually, never arbitrary device captures.
+# Regeneration needs a fresh manual privacy/visual review before changing hashes.
+REVIEWED_MEDIA = {
+    "docs/demo/phone-cleanup-demo.gif": (b"GIF89a", "25ff1f9de59ac7f9231df7187f7ffddb404596cb9b7d4a61c60f7ac287456919"),
+    "docs/demo/phone-cleanup-demo.mp4": (b"\x00\x00\x00 ftyp", "79d225941d2f7ea7a5cb93130c09465b628aa62deab90aa45212e5e33dcad5a1"),
+    "docs/demo/phone-cleanup-demo-poster.png": (b"\x89PNG\r\n\x1a\n", "f3dc2957eea4d6a2d2c47c9ce03d71bb8ab2897ac86980ea3ea4f9e4d4112ca6"),
+}
+ALLOWED |= set(REVIEWED_MEDIA)
 PATTERNS = {
     "private home path": re.compile(r"/(?:Users|home)/[A-Za-z0-9._-]+/"),
     "private temporary path": re.compile(r"/(?:private/)?var/folders/[A-Za-z0-9/_.-]+"),
@@ -59,6 +69,14 @@ def check(root=ROOT):
         if path.is_symlink():
             problems.append(name + ": symlink not allowed")
             continue
+        if name in REVIEWED_MEDIA:
+            signature, expected_hash = REVIEWED_MEDIA[name]
+            data = path.read_bytes()
+            if len(data) > 5_000_000 or not data.startswith(signature):
+                problems.append(name + ": unexpected media type or size")
+            if hashlib.sha256(data).hexdigest() != expected_hash:
+                problems.append(name + ": media changed; new privacy/visual review required")
+            continue
         try:
             text = path.read_text(encoding="utf-8")
         except (UnicodeError, OSError):
@@ -80,4 +98,4 @@ if __name__ == "__main__":
     if findings:
         print("Publication check failed:\n" + "\n".join(findings))
         sys.exit(1)
-    print("Source-only publication check passed. Manual privacy review is still required.")
+    print("Publication allowlist check passed. Manual privacy review is still required.")
