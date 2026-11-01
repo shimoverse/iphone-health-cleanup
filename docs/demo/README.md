@@ -1,23 +1,36 @@
-# Phone cleanup illustrated walkthrough
+# Real iPhone Mirroring demo
 
-[Play the GIF](phone-cleanup-demo.gif) · [Download the MP4](phone-cleanup-demo.mp4) · [View the poster](phone-cleanup-demo-poster.png)
+[Watch/download the MP4](iphone-mirroring-live-demo.mp4) · [GIF](iphone-mirroring-live-demo.gif) · [Poster](iphone-mirroring-live-demo-poster.png)
 
-This 32-second storyboard uses fictional apps and AI-assisted illustrations. It is not a screen recording, a working phone controller, a measured cleanup duration or evidence of recovered storage. It connects to no device. No personal phone screenshots, inventories or account information are included.
+![Actual agent-driven iPhone Mirroring inspection](iphone-mirroring-live-demo.gif)
 
-## What it shows
+Recorded on November 1, 2026, with the phone owner's permission to create a public GitHub demo. The assistant used the real iPhone Mirroring window through its computer-control tool. The phone screens are captured pixels, not drawn phone UI or an animated simulation.
 
-1. Ask a local assistant: “My phone is slow. Check its health and help me make some space.”
-2. Choose iPhone Mirroring for supported screen steps or trusted USB for the included scripts. Mirroring needs a nearby locked iPhone; USB read-only checks generally allow phone use. Actual changes need an idle window.
-3. Inspect storage, battery and the slow task before changes. State whether the inventory is complete.
-4. Show the proposed app decisions and saved-data consequences.
-5. Override a recommendation: keep Example Travel.
-6. Approve only Example Game and Example Trial, including their local data.
-7. Check the sample removals and retained apps. Real storage and performance measurements are separate.
+## What happens
 
-The illustration uses the iPhone journey. Android has a separate connection and safety model, explained in the main README.
+| Part | Observed action or result |
+|---|---|
+| Storage | Start on the real iPhone Storage overview. |
+| Search | The assistant clicks the Applications search field and types Netflix. The cloud icon is visible in the result. |
+| Inspect | The assistant opens Netflix's app details. iOS shows Reinstall App and 328.4 MB of Documents & Data. |
+| Stop | The assistant returns to the search result. Netflix remains listed. No delete or reinstall request was sent. |
 
-## Reuse
+This is one read-only inspection. It does not show a complete app inventory, the user approving a cleanup list, a removal, USB-script verification or measured storage/performance improvement. A real cleanup must first present its exact plan and receive approval. The displayed 328.4 MB is retained app data, not verified recoverable or recovered space.
 
-Use the MP4 for social video, the GIF for README/blog embeds and the poster for an email thumbnail. Keep the illustration label and fictional-data caption visible. The original illustrations and source are MIT-licensed; see the repository license and third-party notices.
+## Capture and editing
 
-The optional renderer is [tools/render_demo.py](../../tools/render_demo.py). It needs Python, Pillow, FFmpeg and the macOS Arial/Georgia fonts. It does not access a phone or network. Run it with `--out` pointing to a temporary output folder outside this checkout. The publication check allows only the exact reviewed asset hashes; regeneration requires visual/privacy review before updating those hashes.
+- Duration: 23.67 seconds. MP4: 1280 × 1080, H.264, no audio. GIF: 960 × 810.
+- The native Mac recorder did not provide a reliable capture during setup. Instead, the assistant's supported screenshot tool sampled the real Mirroring window continuously during each interaction, at about five frames per second.
+- Three captured clips are joined. Gaps between tool calls are omitted; within each clip the edit preserves the captured timing. The output uses six frames per second, repeating captured frames where needed. It is not a continuous high-frame-rate Mac recording or an end-to-end timing benchmark.
+- Captions are added beside the captured window. An explicitly labeled opaque mask hides unrelated app rows. No phone controls, data values or successful actions are fabricated.
+- Only the reviewed MP4, GIF and poster are published. Raw frames, capture timestamps, local inventories and the recorder test stay outside the repository.
+- No messages, photos, browsing history, account identifiers, passwords, authentication codes or financial-app screens appear in the published assets. Every final frame was included in the visual/privacy review; encoded playback and representative frames were also checked.
+- The publication guard checks these exact media hashes. Any replacement must receive a fresh privacy review; arbitrary screenshots are still rejected.
+
+Apple and Netflix interfaces and marks belong to their respective owners. Their appearance does not imply endorsement. The project's original captions and documentation are covered by its MIT license; that does not relicense third-party interfaces or marks.
+
+## Earlier concept illustration
+
+The earlier [illustrated GIF](phone-cleanup-demo.gif), [MP4](phone-cleanup-demo.mp4) and [poster](phone-cleanup-demo-poster.png) use fictional apps. They remain historical concept assets and are not the live demo featured in the README. They connect to no phone and prove no cleanup result.
+
+The optional [illustration renderer](../../tools/render_demo.py) creates those concept assets only. It cannot reproduce this live footage and does not operate a phone.

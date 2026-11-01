@@ -25,6 +25,16 @@ Keep trading, finance and cryptocurrency apps, including exchanges, wallets and 
 
 [I asked my AI agent to help with a slow iPhone](docs/blog/article.md) follows the original problem, the iPhone Mirroring attempt and the skill built to make the work more explicit and checkable. It includes the user journey, comparison charts, a demo and safety FAQs. See [the companion files](docs/blog/README.md) for the interactive version.
 
+## Watch the agent use a real iPhone
+
+[![Actual agent-driven iPhone Mirroring: inspect storage, search for an offloaded app and review its retained data without deleting it](docs/demo/iphone-mirroring-live-demo.gif)](docs/demo/iphone-mirroring-live-demo.mp4)
+
+**24-second read-only demo:** the agent searches the real iPhone Storage list, opens Netflix's offloaded-app details and returns to the unchanged list. iOS displays **328.4 MB of retained documents and data**. This is an observed app-data figure, not measured recovered space.
+
+[Watch/download MP4](docs/demo/iphone-mirroring-live-demo.mp4) · [Capture details and limits](docs/demo/README.md)
+
+Captured from the actual Mirroring window at about five frames per second, with three clips joined and captions added. Unrelated app details are hidden. No delete or reinstall request was sent. This demonstrates one on-screen inspection, not a complete inventory, an approval conversation, scripted USB cleanup or a speedup benchmark.
+
 ## The problem it solves
 
 On iPhone, a cloud icon marks an offloaded app: its software is removed while documents and data remain. On Android, installed apps, temporary caches and large files offer different cleanup opportunities; archived apps need a separate native review. Reviewing these one by one means repeated navigation, confirmations and checks.

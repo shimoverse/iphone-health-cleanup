@@ -29,9 +29,12 @@ ALLOWED |= {"LICENSES/GPL-3.0-or-later.txt"}
 ALLOWED |= {"skills/" + module + "/" + name
             for module in ("iphone-health-cleanup", "android-health-cleanup")
             for name in ("LICENSE", "NOTICE.md")}
-# Only synthetic illustrations reviewed visually, never arbitrary device captures.
-# Regeneration needs a fresh manual privacy/visual review before changing hashes.
+# Exact assets reviewed visually, including a redacted, owner-authorized live demo.
+# Arbitrary device captures remain disallowed. Each replacement needs fresh review.
 REVIEWED_MEDIA = {
+    "docs/demo/iphone-mirroring-live-demo.gif": (b"GIF89a", "cff342f97abcc7717d54a4b2e3352d6c88079a50abf0b98ce51a7443b74e13bb"),
+    "docs/demo/iphone-mirroring-live-demo.mp4": (b"\x00\x00\x00 ftyp", "64fa7b6bcdf7a211953dd7177b87ef35c6562e795c2e92745494af3f2359ac62"),
+    "docs/demo/iphone-mirroring-live-demo-poster.png": (b"\x89PNG\r\n\x1a\n", "d94563bcb49310c08b5fa499289da2fa11b78f41ad5298e05566aecbc41760a9"),
     "docs/demo/phone-cleanup-demo.gif": (b"GIF89a", "25ff1f9de59ac7f9231df7187f7ffddb404596cb9b7d4a61c60f7ac287456919"),
     "docs/demo/phone-cleanup-demo.mp4": (b"\x00\x00\x00 ftyp", "79d225941d2f7ea7a5cb93130c09465b628aa62deab90aa45212e5e33dcad5a1"),
     "docs/demo/phone-cleanup-demo-poster.png": (b"\x89PNG\r\n\x1a\n", "f3dc2957eea4d6a2d2c47c9ce03d71bb8ab2897ac86980ea3ea4f9e4d4112ca6"),

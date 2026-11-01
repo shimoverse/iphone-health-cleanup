@@ -28,6 +28,12 @@ There is also a simple interruption rule: the iPhone needs to stay locked for Mi
 
 The skill grew beyond that first route. It now includes local scripts for supported iPhone operations over trusted USB, and a separate Android module using an owner-authorized debugging connection. Mirroring remains useful for suitable screen-based work. It does not replace the USB connection required by the iPhone scripts.
 
+## A short recording of the actual phone
+
+[![Agent-driven iPhone Mirroring: search an offloaded app and inspect its retained data](../demo/iphone-mirroring-live-demo.gif)](../demo/iphone-mirroring-live-demo.mp4)
+
+*This 24-second capture shows the agent using my actual iPhone Storage screen. Netflix is offloaded, but iOS still shows 328.4 MB of documents and data. The agent opens the details and returns without deleting or reinstalling it. Unrelated app details are hidden; three clips are joined from capture at about five frames per second. This demonstrates read-only inspection, not a full cleanup, an approval exchange or recovered storage. [Video and capture details](../demo/README.md).*
+
 ## I kept explaining what had to stay
 
 “Help me make space” leaves a lot unsaid.

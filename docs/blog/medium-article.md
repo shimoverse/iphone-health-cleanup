@@ -36,7 +36,9 @@ Once the relevant skill is installed and enabled in a compatible local assistant
 
 You don't need to remember the skill's name. Selection still depends on the assistant and host; a GitHub link alone does not install it or grant phone access.
 
-*A live recording of the agent operating iPhone Mirroring will be inserted here after capture and privacy review.*
+[![Actual iPhone Mirroring: inspect an offloaded app without deleting it](../demo/iphone-mirroring-live-demo.gif)](../demo/iphone-mirroring-live-demo.mp4)
+
+*The agent uses my real iPhone Storage screen, searches for Netflix and checks the 328.4 MB of retained data iOS displays. No deletion or reinstall request is sent. Unrelated app details are hidden. Three clips are joined from capture at about five frames per second. This shows read-only inspection, not a full inventory, an approval exchange or recovered storage.*
 
 ## The report comes before the delete button
 
@@ -116,4 +118,4 @@ Start with the [installation instructions](https://github.com/shimoverse/iphone-
 
 I built this because I wanted help with an ordinary task and found myself explaining the boundaries as we went. Putting those boundaries into a skill gives the next run a clearer starting point. It gives me something concrete to review when I decide how much to trust an agent with data I care about.
 
-*Disclosure: I built this project. AI assisted with implementation, research and editing; this article describes my own phone-cleanup experiment. The demo uses fictional apps. Scripted real-device performance remains unbenchmarked.*
+*Disclosure: I built this project. AI assisted with implementation, research and editing; this article describes my own phone-cleanup experiment. The live demo shows a real, redacted iPhone screen inspection; no deletion occurs. Scripted real-device performance remains unbenchmarked.*
