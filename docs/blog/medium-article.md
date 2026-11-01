@@ -110,7 +110,7 @@ The source is public on GitHub. A private personal ChatGPT plugin exists, but it
 
 ## Try a read-only check first
 
-The project is a public preview under GPL-3.0-or-later. It builds on research into [iphone-app-manager](https://github.com/Nolikzero/claude-skills) and [pymobiledevice3's Device Operator](https://doronz88.github.io/pymobiledevice3/guides/codex-device-operator-skill/), with a separate Android approach.
+The project is a public preview. Its original code and documentation are MIT-licensed; [third-party dependency terms still apply](https://github.com/shimoverse/iphone-health-cleanup/blob/main/NOTICE.md). It builds on research into [iphone-app-manager](https://github.com/Nolikzero/claude-skills) and [pymobiledevice3's Device Operator](https://doronz88.github.io/pymobiledevice3/guides/codex-device-operator-skill/), with a separate Android approach.
 
 Start with the [installation instructions](https://github.com/shimoverse/iphone-health-cleanup#install-ask-your-agent), ask for a read-only report and inspect the proposed list before approving changes.
 

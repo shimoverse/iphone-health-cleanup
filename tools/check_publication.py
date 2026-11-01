@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-License-Identifier: MIT
 """Publication allowlist with reviewed media hashes, not a full privacy detector."""
 import hashlib
 import os
@@ -25,6 +25,10 @@ ALLOWED |= {"docs/blog/" + name for name in (
     "README.md", "article.md", "reader.html", "linkedin-post.md",
     "workflow-comparison.svg", "manual-work-estimate.svg", "user-journey.svg")}
 ALLOWED |= {"docs/blog/medium-article.md", "docs/demo/README.md", "tools/render_demo.py"}
+ALLOWED |= {"LICENSES/GPL-3.0-or-later.txt"}
+ALLOWED |= {"skills/" + module + "/" + name
+            for module in ("iphone-health-cleanup", "android-health-cleanup")
+            for name in ("LICENSE", "NOTICE.md")}
 # Only synthetic illustrations reviewed visually, never arbitrary device captures.
 # Regeneration needs a fresh manual privacy/visual review before changing hashes.
 REVIEWED_MEDIA = {

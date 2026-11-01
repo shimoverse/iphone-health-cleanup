@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-License-Identifier: MIT
 """Bounded, read-only iPhone snapshot; offline, evidence-limited scorecard.
 
 No cache/file deletion, profile changes, backup, log capture or firmware actions.

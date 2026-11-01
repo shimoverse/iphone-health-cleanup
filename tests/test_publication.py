@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-License-Identifier: MIT
 """Synthetic privacy patterns only; no actual credentials or personal paths."""
 import importlib.util
 import tempfile

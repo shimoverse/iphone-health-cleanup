@@ -2,7 +2,7 @@
 
 Copyright (C) 2026 Phone Health & Cleanup contributors.
 
-The original code and documentation in this repository are free software: you may redistribute and modify them under the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. They are distributed without any warranty, including implied warranties of merchantability or fitness for a particular purpose. See LICENSE for the complete terms.
+The original code and documentation in the current revision are licensed under the MIT License. See [LICENSE](LICENSE) for the full grant, copyright/permission notice requirement and warranty disclaimer. This grant covers our original work; it does not relicense third-party software. Earlier GPL grants remain valid for copies received under those terms.
 
 ## Dependencies and research references
 
@@ -20,6 +20,12 @@ The iPhone scripts import and use the separately installed `pymobiledevice3` lib
 
 Android research also includes Google Pixel documentation, mobile-mcp, uiautomator2, Shizuku/Canta, SD Maid SE and UAD NG. Workflow concepts were selectively adapted into original code; these tools, binaries and debloat lists are not bundled. See the [Android research notes](skills/android-health-cleanup/references/research.md) and [iPhone source audit](skills/iphone-health-cleanup/references/source-audit.md) for source links and adaptation decisions.
 
-The GNU GPL v3 text in LICENSE is the unmodified license text distributed with the pinned dependency. No dependency source is included here. Generated run data belongs outside the source checkout; it is not a repository example or a contribution.
+## iPhone dependency boundary
+
+The iPhone USB helpers import `pymobiledevice3==11.49.0`, licensed GPL-3.0-or-later. Our MIT grant does not change that library's license or grant permission to distribute a combined work under MIT alone. Distribution involving GPL components must satisfy the applicable GPL requirements; separate installation by itself is not a blanket exemption. See the [upstream package metadata](https://github.com/doronz88/pymobiledevice3/blob/v11.49.0/pyproject.toml) and [GNU guidance on combined programs](https://www.gnu.org/licenses/gpl-faq.html#GPLPlugins).
+
+The unmodified GPL v3 text previously used at the repository root is retained in [LICENSES/GPL-3.0-or-later.txt](LICENSES/GPL-3.0-or-later.txt) for reference to the third-party dependency. No dependency source is included here. The MIT label describes our original source, not an assertion that the full iPhone USB stack has only MIT obligations.
+
+Generated run data belongs outside the source checkout; it is not a repository example or a contribution.
 
 Apple, iPhone, Safari, Android, Google Pixel and other product names identify compatibility and referenced controls. This is an independent project, not an official Apple or Google product or an endorsed security/diagnostic service.

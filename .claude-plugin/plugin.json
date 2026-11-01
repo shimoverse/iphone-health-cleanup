@@ -7,7 +7,7 @@
   },
   "homepage": "https://github.com/shimoverse/iphone-health-cleanup",
   "repository": "https://github.com/shimoverse/iphone-health-cleanup",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "keywords": [
     "phone",
     "iphone",

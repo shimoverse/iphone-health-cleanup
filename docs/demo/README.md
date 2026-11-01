@@ -18,6 +18,6 @@ The illustration uses the iPhone journey. Android has a separate connection and 
 
 ## Reuse
 
-Use the MP4 for social video, the GIF for README/blog embeds and the poster for an email thumbnail. Keep the illustration label and fictional-data caption visible. The project is GPL-3.0-or-later; see the repository license.
+Use the MP4 for social video, the GIF for README/blog embeds and the poster for an email thumbnail. Keep the illustration label and fictional-data caption visible. The original illustrations and source are MIT-licensed; see the repository license and third-party notices.
 
 The optional renderer is [tools/render_demo.py](../../tools/render_demo.py). It needs Python, Pillow, FFmpeg and the macOS Arial/Georgia fonts. It does not access a phone or network. Run it with `--out` pointing to a temporary output folder outside this checkout. The publication check allows only the exact reviewed asset hashes; regeneration requires visual/privacy review before updating those hashes.

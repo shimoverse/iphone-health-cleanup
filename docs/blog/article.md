@@ -114,7 +114,7 @@ The [source and setup instructions](https://github.com/shimoverse/iphone-health-
 
 | Where it is available | Current status |
 |---|---|
-| GitHub | Public source, scripts, research and installation instructions; GPL-3.0-or-later |
+| GitHub | Original source under MIT; [third-party terms apply](../../NOTICE.md) |
 | Local Codex or Claude Code | Install the relevant skill and start a fresh session |
 | ChatGPT plugin | A private personal version exists; it is not a public directory release |
 | Cowork | Custom plugin packaging is available; installation and phone-tool access need checking |

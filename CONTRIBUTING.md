@@ -2,6 +2,10 @@
 
 Please keep the boundary between implemented scripts, guided actions and proposed capabilities clear. Useful changes include supported-device field observations, focused bug fixes and an independently tested on-phone photo scanner with strict Favorites protection.
 
+## License
+
+Contribute original work under the project's MIT License. Preserve third-party copyright and license notices, and identify any third-party material before including it. The MIT grant does not replace the terms of external dependencies; see [NOTICE.md](NOTICE.md).
+
 ## Offline checks
 
 Use the isolated environment from the README, then run from the repository root:

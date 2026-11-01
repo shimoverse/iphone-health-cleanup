@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-License-Identifier: MIT
 """Offline adapter and artifact safety checks; never contact a phone."""
 import copy
 import importlib

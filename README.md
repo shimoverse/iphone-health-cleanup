@@ -192,7 +192,7 @@ Installations and enabled settings are specific to the host/account. Publishing 
 The root `plugin.json` packages both skills for OpenAI-compatible plugin hosts; `.claude-plugin/plugin.json` provides Claude compatibility. Neither adds a background service, startup hook or remote phone-control server. To create a source-only upload ZIP after reviewing the current committed release, run from the repository root (the destination must be outside the checkout):
 
 ```sh
-git archive --format=zip --output=../phone-health-cleanup.zip HEAD plugin.json .claude-plugin skills LICENSE NOTICE.md
+git archive --format=zip --output=../phone-health-cleanup.zip HEAD plugin.json .claude-plugin skills LICENSE LICENSES NOTICE.md
 ```
 
 For Cowork, use this ZIP's custom-plugin upload flow; a standalone skill ZIP is a different upload type. No dependencies, debugging setup or phone cleanup occurs during packaging. Keep the plugin enabled. A new machine/account needs setup again; device trust and exact cleanup consent are separate.
@@ -322,4 +322,4 @@ Never attach raw run folders, screenshots, browser history or backups to public 
 
 ## License
 
-Licensed under **GPL-3.0-or-later**. See [LICENSE](LICENSE) for the terms and [credits and third-party notices](NOTICE.md) for dependencies and research acknowledgments.
+Original code and documentation are licensed under **MIT**. Free to use, modify and redistribute, including commercially, subject to the MIT notice requirement. See [LICENSE](LICENSE) and [third-party licenses and credits](NOTICE.md).

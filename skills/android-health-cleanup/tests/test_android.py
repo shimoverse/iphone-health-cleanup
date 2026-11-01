@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-License-Identifier: MIT
 """Offline adversarial checks. Every device response is synthetic; no ADB runs."""
 import copy
 import importlib.util

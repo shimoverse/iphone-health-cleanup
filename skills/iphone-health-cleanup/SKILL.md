@@ -1,7 +1,7 @@
 ---
 name: iphone-health-cleanup
 description: Check iPhone health and safely free storage when the user says their phone is slow, full, low on space, draining battery, or needs unused apps/cache cleaned. Match ordinary requests such as check my phone or make space on my phone; no skill name is needed. Start with read-only facts, show an exact cleanup plan and get approval before changes. Use this module when the phone is iPhone; ask which phone if unclear. Excludes human medical health and computer-disk cleanup.
-license: GPL-3.0-or-later
+license: MIT
 ---
 
 # iPhone health and cleanup

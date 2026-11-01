@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-License-Identifier: MIT
 """Offline safety invariants; no iPhone, pairing, or device API is used."""
 import asyncio
 import copy

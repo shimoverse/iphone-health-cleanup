@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-License-Identifier: MIT
 """Installer behavior in temporary directories; never installs into a real host."""
 import importlib.util
 import os
@@ -27,6 +27,8 @@ class InstallerTests(unittest.TestCase):
             target = root / "iphone-health-cleanup"
             installer.install(target)
             self.assertEqual((target / "SKILL.md").read_bytes(), (installer.SOURCE / "SKILL.md").read_bytes())
+            self.assertEqual((target / "LICENSE").read_bytes(), (ROOT / "LICENSE").read_bytes())
+            self.assertIn("pymobiledevice3", (target / "NOTICE.md").read_text())
             self.assertEqual((root / "unrelated.txt").read_text(), "keep")
             self.assertFalse(list(target.rglob("*.pyc")))
             (target / "SKILL.md").write_text("user customization")

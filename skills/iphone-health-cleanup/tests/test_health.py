@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-License-Identifier: MIT
 """Offline diagnostic boundaries; no live iPhone is contacted."""
 import asyncio
 import copy

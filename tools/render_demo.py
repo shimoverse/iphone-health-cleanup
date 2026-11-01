@@ -1,4 +1,4 @@
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-License-Identifier: MIT
 """Render a fully synthetic, explicitly labeled workflow illustration.
 
 This is an illustrated storyboard, not a capture of an assistant or device UI.

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-License-Identifier: MIT
 """Review-first offloaded-app cleanup. No device dependency is imported for planning/tests."""
 import argparse
 import asyncio
