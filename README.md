@@ -4,12 +4,6 @@ Two open-source skills for a local AI assistant: understand a slow or full phone
 
 **Public preview:** both modules have offline safety tests using fake devices. Real-device compatibility, time savings and storage recovery have not been benchmarked. Start with a read-only check. No Apple or Google endorsement or affiliation.
 
-## See the workflow in 32 seconds
-
-![Illustrated walkthrough: ask naturally, choose Mirroring or USB, inspect read-only, review the app list, keep a recommended app, approve the exact batch and verify. Fictional apps; no phone is connected.](docs/demo/phone-cleanup-demo.gif)
-
-**Illustration with fictional apps, created with AI-assisted code.** This is a storyboard of the intended workflow, not a recording of automated phone control. Its 32-second playback is not a completion-time claim. [Watch the MP4](docs/demo/phone-cleanup-demo.mp4), [view the still image](docs/demo/phone-cleanup-demo-poster.png), or [read the demo notes](docs/demo/README.md).
-
 ## You see the report before anything is deleted
 
 | Stage | What you should receive |

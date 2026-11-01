@@ -36,9 +36,7 @@ Once the relevant skill is installed and enabled in a compatible local assistant
 
 You don't need to remember the skill's name. Selection still depends on the assistant and host; a GitHub link alone does not install it or grant phone access.
 
-![Illustrated phone cleanup walkthrough showing connection, inspection, review, a user override, exact-list approval and verification.](https://raw.githubusercontent.com/shimoverse/iphone-health-cleanup/main/docs/demo/phone-cleanup-demo.gif)
-
-*Illustration created with AI-assisted code, using fictional apps. This is not a recording of an automated device cleanup, and its playback time is not a benchmark.*
+*A live recording of the agent operating iPhone Mirroring will be inserted here after capture and privacy review.*
 
 ## The report comes before the delete button
 
