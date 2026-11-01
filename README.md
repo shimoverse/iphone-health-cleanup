@@ -320,6 +320,6 @@ Never attach raw run folders, screenshots, browser history or backups to public 
 - [Source research](skills/iphone-health-cleanup/references/health-research.md) and [source audit](skills/iphone-health-cleanup/references/source-audit.md)
 - [Contributing and offline tests](CONTRIBUTING.md)
 
-## License and credit
+## License
 
-This project is licensed under **GPL-3.0-or-later**. See [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md). The GPL license aligns this distribution with the separately installed GPL-licensed pymobiledevice3 dependency. Nolikzero's iphone-app-manager and the pymobiledevice3 Device Operator skill informed the workflow; their scripts and skill bodies were not copied. Android research includes AOSP, Google Pixel documentation, scrcpy, mobile-mcp, uiautomator2, Shizuku/Canta, SD Maid SE, UAD NG and DroidRun mobile-harness. Concepts were selectively adapted into original code; these tools, binaries and debloat lists are not bundled. ADB is separately installed under its own distribution terms.
+Licensed under **GPL-3.0-or-later**. See [LICENSE](LICENSE) for the terms and [credits and third-party notices](NOTICE.md) for dependencies and research acknowledgments.
