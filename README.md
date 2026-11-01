@@ -314,7 +314,7 @@ The snapshot also creates a readable Markdown summary. Missing evidence stays un
 
 ## Your data stays out of this repository
 
-The shipped examples use fictional devices and app IDs. The publication is a fresh source-only repository, with no personal cleanup history, device inventories, pair records, screenshots, photos, backups, credentials or runtime logs.
+The shipped test examples use fictional devices and app IDs. The public demo is a separately reviewed, owner-authorized capture of a real iPhone screen inspection, with unrelated app details hidden. Only its final MP4, GIF and poster are included; raw captures, personal cleanup history, device inventories, pair records, photos, backups, credentials and runtime logs stay outside this repository.
 
 During use, keep run files outside the checkout. They can contain private device IDs and app names. The scripts do not upload them or call an AI service; an assistant may send the text or images it reads to its own model provider. Review that provider's data settings and share minimal summaries. Logs/backups and photo previews require their own scope decision.
 
